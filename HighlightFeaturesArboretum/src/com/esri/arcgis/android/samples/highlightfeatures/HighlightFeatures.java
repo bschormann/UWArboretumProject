@@ -128,7 +128,10 @@ public class HighlightFeatures extends Activity {
             inputParameters.setMapWidth(mMapView.getWidth());
             inputParameters.setTolerance(10);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/bschormann/UWArboretumProject.git
             // Execute identify task
             MyIdentifyTask mIdenitfy = new MyIdentifyTask();
             mIdenitfy.execute(inputParameters);
