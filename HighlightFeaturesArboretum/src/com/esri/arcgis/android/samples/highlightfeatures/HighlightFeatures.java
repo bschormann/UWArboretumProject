@@ -128,6 +128,7 @@ public class HighlightFeatures extends Activity {
             inputParameters.setMapWidth(mMapView.getWidth());
             inputParameters.setTolerance(10);
 
+
             // Execute identify task
             MyIdentifyTask mIdenitfy = new MyIdentifyTask();
             mIdenitfy.execute(inputParameters);
