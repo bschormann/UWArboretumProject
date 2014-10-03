@@ -134,8 +134,8 @@ public class Identify extends Activity {
 		Layer layer8 = new ArcGISDynamicMapServiceLayer( 
 				"http://uwbgmaps.cfr.washington.edu/arcgis/rest/services/ArbPhotography/MapServer");
 		
-		mMapView.addLayer(layer6);
 		mMapView.addLayer(layer3);
+		mMapView.addLayer(layer6);
 		mIdentifyTaskURL = 
 				"http://uwbgmaps.cfr.washington.edu/arcgis/rest/services/PublicFeatures/MapServer";
 		

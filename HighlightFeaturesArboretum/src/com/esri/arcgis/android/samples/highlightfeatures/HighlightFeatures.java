@@ -108,59 +108,55 @@ public class HighlightFeatures extends Activity {
       @Override
       public boolean onLongPress(float x, float y) {
         try {
-          if (mTiledMapServiceLayer.isInitialized() && mSelectedLayerIndex >= 0) {
+            if (mTiledMapServiceLayer.isInitialized() && mSelectedLayerIndex >= 0) {
 
-            mGraphicsLayer.removeAll();
+                mGraphicsLayer.removeAll();
 
-            // Get the point user clicked on
-            Point pointClicked = mMapView.toMapPoint(x, y);
+                // Get the point user clicked on
+                Point pointClicked = mMapView.toMapPoint(x, y);
 
-            // Set parameters for identify task
-            IdentifyParameters inputParameters = new IdentifyParameters();
-            inputParameters.setGeometry(pointClicked);
-            inputParameters.setLayers(new int[] { mLayerIndexes[mSelectedLayerIndex] });
-            Envelope env = new Envelope();
-            mMapView.getExtent().queryEnvelope(env);
-            inputParameters.setSpatialReference(mMapView.getSpatialReference());
-            inputParameters.setMapExtent(env);
-            inputParameters.setDPI(96);
-            inputParameters.setMapHeight(mMapView.getHeight());
-            inputParameters.setMapWidth(mMapView.getWidth());
-            inputParameters.setTolerance(10);
+                // Set parameters for identify task
+                IdentifyParameters inputParameters = new IdentifyParameters();
+                inputParameters.setGeometry(pointClicked);
+                inputParameters.setLayers(new int[] { mLayerIndexes[mSelectedLayerIndex] });
+                Envelope env = new Envelope();
+                mMapView.getExtent().queryEnvelope(env);
+                inputParameters.setSpatialReference(mMapView.getSpatialReference());
+                inputParameters.setMapExtent(env);
+                inputParameters.setDPI(96);
+                inputParameters.setMapHeight(mMapView.getHeight());
+                inputParameters.setMapWidth(mMapView.getWidth());
+                inputParameters.setTolerance(10);
 
-<<<<<<< HEAD
+                // Execute identify task
+                MyIdentifyTask mIdenitfy = new MyIdentifyTask();
+                mIdenitfy.execute(inputParameters);
 
-=======
->>>>>>> branch 'master' of https://github.com/bschormann/UWArboretumProject.git
-            // Execute identify task
-            MyIdentifyTask mIdenitfy = new MyIdentifyTask();
-            mIdenitfy.execute(inputParameters);
-
-          } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Please select a layer to identify features from.",
-                Toast.LENGTH_SHORT);
-            toast.show();
+              } else {
+                Toast toast = Toast.makeText(getApplicationContext(), "Please select a layer to identify features from.",
+                    Toast.LENGTH_LONG);
+                toast.show();
+              }
+            } catch (Exception ex) {
+              ex.printStackTrace();
+            }
+            return true;
           }
-        } catch (Exception ex) {
-          ex.printStackTrace();
-        }
-        return true;
-      }
-    });
+        });
 
-    // Initialize LayerButton, Clear button, and Label
-    mLayerButton = (Button) findViewById(R.id.layerbutton);
-    mLayerButton.setEnabled(false);
-    mLayerButton.setOnClickListener(new View.OnClickListener() {
-      /*
-       * This displays an AlertDilaog as defined in onCreateDialog() method.
-       * Invocation of show() causes onCreateDialog() to be called internally.
-       */
-      @Override
-      public void onClick(View v) {
-        showDialog(0);
-      }
-    });
+        // Initialize LayerButton, Clear button, and Label
+    	mLayerButton = (Button) findViewById(R.id.layerbutton);
+    	mLayerButton.setEnabled(false);
+    	mLayerButton.setOnClickListener(new View.OnClickListener() {
+          /*
+           * This displays an AlertDilaog as defined in onCreateDialog() method.
+           * Invocation of show() causes onCreateDialog() to be called internally.
+           */
+          @Override
+          public void onClick(View v) {
+            showDialog(0);
+          }
+        });
 
     mLabel = (TextView) findViewById(R.id.label);
 
